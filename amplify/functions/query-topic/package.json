@@ -1,0 +1,10 @@
+{
+  "name": "query-topic",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.0.0",
+    "@aws-sdk/lib-dynamodb": "^3.0.0",
+    "@anthropic-ai/sdk": "^0.32.1"
+  }
+}
