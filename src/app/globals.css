@@ -129,4 +129,8 @@
     @apply bg-background text-foreground;
     padding-top: 4rem; /* 64px - height of navbar */
   }
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
 }
