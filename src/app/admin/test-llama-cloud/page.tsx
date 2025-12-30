@@ -2,13 +2,39 @@
 
 import { useState } from 'react';
 import { generateClient } from 'aws-amplify/data';
-import type { Schema } from '@/amplify/data/resource';
+import type { Schema } from '@/../amplify/data/resource';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
 const client = generateClient<Schema>();
+
+interface SampleNode {
+  score: number;
+  text?: string;
+  metadata?: {
+    page?: number;
+    page_label?: number;
+    [key: string]: unknown;
+  };
+  extra_info?: {
+    page_label?: number;
+    [key: string]: unknown;
+  };
+}
+
+interface TestQueryResult {
+  success: boolean;
+  query: string;
+  pipelineId: string;
+  responseStructure?: {
+    hasRetrievalNodes: boolean;
+    nodeCount: number;
+    sampleNode: SampleNode | null;
+  };
+  fullResponse?: unknown;
+}
 
 const PIPELINES = {
   json: {
@@ -27,7 +53,7 @@ export default function TestLlamaCloudPage() {
   const [query, setQuery] = useState('What are the rules for extra time?');
   const [pipelineType, setPipelineType] = useState<'json' | 'pdf'>('pdf');
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<TestQueryResult | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const pipelineId = PIPELINES[pipelineType].id;
@@ -186,7 +212,7 @@ export default function TestLlamaCloudPage() {
                   <Label className="text-sm font-semibold">Text Content</Label>
                   <p className="text-sm bg-gray-50 p-3 rounded border">
                     {result.responseStructure.sampleNode.text?.substring(0, 500)}
-                    {result.responseStructure.sampleNode.text?.length > 500 && '...'}
+                    {(result.responseStructure.sampleNode.text?.length ?? 0) > 500 && '...'}
                   </p>
                 </div>
 

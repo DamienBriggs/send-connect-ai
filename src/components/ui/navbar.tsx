@@ -76,13 +76,6 @@ export async function Navbar({
 
         {/* Center Navigation */}
         <div className='hidden lg:flex items-center gap-8'>
-          <NavLink href='#'>Product</NavLink>
-          <NavLink href='#'>Solutions</NavLink>
-          <NavLink href='#'>Developers</NavLink>
-          <NavLink href='#'>Resources</NavLink>
-          <NavLink href='#'>Company</NavLink>
-          <NavLink href='#'>Blog</NavLink>
-          <NavLink href='#'>Pricing</NavLink>
           {/* Query Topics - available to all authenticated users */}
           {isAuthenticated && <NavLink href='/query'>Query Topics</NavLink>}
           {/* Admin-only link - client component with real-time updates */}
