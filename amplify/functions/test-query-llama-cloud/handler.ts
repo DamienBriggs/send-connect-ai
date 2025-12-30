@@ -1,6 +1,23 @@
 import type { Schema } from '../../data/resource';
 
 /**
+ * Llama Cloud retrieval node structure
+ */
+interface RetrievalNode {
+  score: number;
+  text?: string;
+  metadata?: {
+    page?: number;
+    page_label?: number;
+    [key: string]: unknown;
+  };
+  extra_info?: {
+    page_label?: number;
+    [key: string]: unknown;
+  };
+}
+
+/**
  * Test Lambda to explore Llama Cloud retrieval responses
  *
  * This function queries your existing Llama Cloud pipeline to understand:
@@ -65,7 +82,7 @@ export const handler: Schema['testQueryLlamaCloud']['functionHandler'] = async (
     if (result.retrieval_nodes) {
       console.log(`📚 Retrieved ${result.retrieval_nodes.length} nodes`);
 
-      result.retrieval_nodes.forEach((node: any, index: number) => {
+      result.retrieval_nodes.forEach((node: RetrievalNode, index: number) => {
         console.log(`\n--- Node ${index + 1} ---`);
         console.log('Score:', node.score);
         console.log('Text preview:', node.text?.substring(0, 100));

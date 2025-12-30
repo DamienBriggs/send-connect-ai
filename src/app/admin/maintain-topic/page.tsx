@@ -53,15 +53,13 @@ export default async function MaintainTopicPage() {
               const statusColors = {
                 PENDING:
                   'bg-yellow-50 text-yellow-700 ring-yellow-700/10 dark:bg-yellow-900/20 dark:text-yellow-300 dark:ring-yellow-700/20',
-                PROCESSING_PARSE:
-                  'bg-blue-40 text-blue-600 ring-blue-600/10 dark:bg-blue-700/20 dark:text-blue-200 dark:ring-blue-700/20',
-                PROCESSING_INDEX:
-                  'bg-blue-60 text-blue-800 ring-blue-800/10 dark:bg-blue-800/20 dark:text-blue-400 dark:ring-blue-700/20',
+                INDEXING:
+                  'bg-blue-50 text-blue-700 ring-blue-700/10 dark:bg-blue-900/20 dark:text-blue-300 dark:ring-blue-700/20',
                 READY:
                   'bg-green-50 text-green-700 ring-green-700/10 dark:bg-green-900/20 dark:text-green-300 dark:ring-green-700/20',
                 FAILED:
                   'bg-red-50 text-red-700 ring-red-700/10 dark:bg-red-900/20 dark:text-red-300 dark:ring-red-700/20',
-              };
+              } as const;
               const statusColor = topic.topicStatus
                 ? statusColors[topic.topicStatus]
                 : statusColors.PENDING;
@@ -105,9 +103,6 @@ export default async function MaintainTopicPage() {
                     </p>
                     <div className='flex gap-2 mt-4 text-xs text-muted-foreground'>
                       <span>S3 Key: {topic.s3Key}</span>
-                      {topic.s3KeyParsed && (
-                        <span>• Parsed: {topic.s3KeyParsed}</span>
-                      )}
                     </div>
                   </CardContent>
                 </Card>
