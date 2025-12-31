@@ -8,12 +8,12 @@
 # Set your Llama Cloud API key
 npx ampx sandbox secret set LLAMA_CLOUD_API_KEY
 
-# When prompted, paste your key (from .env): llx-ziMIFusg0zGaAgLrHP786hEO7o79CUifcOBLDT2HLHNpU8sK
+# When prompted, paste your key (from .env or Llama Cloud dashboard)
 
 # Set your organization ID
 npx ampx sandbox secret set LLAMA_CLOUD_ORGANIZATION_ID
 
-# When prompted, paste: 0fa64b2f-a5a8-443c-8ff9-abf1fd5d49f1
+# When prompted, paste your organization ID (from Llama Cloud dashboard)
 ```
 
 ### 2. Start sandbox
@@ -31,7 +31,7 @@ From your frontend or using the Amplify console, call the `testQueryLlamaCloud` 
 ```typescript
 const result = await client.mutations.testQueryLlamaCloud({
   query: "What are the rules for extra time?",
-  pipelineId: "737861a7-2a27-4f08-92ff-c3fbea1239bd"
+  pipelineId: "YOUR_PIPELINE_ID_HERE"
 });
 
 console.log(JSON.parse(result.data));

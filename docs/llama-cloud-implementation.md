@@ -213,17 +213,17 @@ This section documents issues encountered during implementation and their soluti
 **Critical Distinction: Organization ID vs Project ID**
 
 Llama Cloud has two levels of hierarchy:
-- **Organization**: Top-level account (e.g., `0fa64b2f-a5a8-443c-8ff9-abf1fd5d49f1`)
-- **Project**: Sub-entity within organization (e.g., `47299daa-473a-4990-84e6-10d4ca1d0786`)
+- **Organization**: Top-level account (UUID format)
+- **Project**: Sub-entity within organization (UUID format)
 
 **Required Environment Variables:**
 
 ```bash
 # Add these via: npx ampx sandbox secret set <KEY_NAME>
 
-LLAMA_CLOUD_API_KEY=llx-...
-LLAMA_CLOUD_ORGANIZATION_ID=0fa64b2f-a5a8-443c-8ff9-abf1fd5d49f1  # Optional, for reference
-LLAMA_CLOUD_PROJECT_ID=47299daa-473a-4990-84e6-10d4ca1d0786       # Required for file upload
+LLAMA_CLOUD_API_KEY=llx-YOUR_API_KEY_HERE
+LLAMA_CLOUD_ORGANIZATION_ID=YOUR_ORG_ID_HERE     # Optional, for reference
+LLAMA_CLOUD_PROJECT_ID=YOUR_PROJECT_ID_HERE      # Required for file upload
 ```
 
 **How to find your Project ID:**
